@@ -2,9 +2,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ShippingService {
-    private double ratePerGram = 0.1; //Assuming shipping cost is calculated per gram
+    private double ratePerGram = 0.027; //Assuming shipping cost is calculated per gram
 
-    public double calulateShippingCosts(List<Shippable> shippables) {
+    public double calculateShippingCosts(List<Shippable> shippables) {
         double shippingCost = 0;
         for (Shippable shippable : shippables) {
             shippingCost += shippable.getWeight() * this.ratePerGram;
@@ -22,9 +22,9 @@ public class ShippingService {
         }
 
         for (Shippable shippable : itemCount.keySet()) {
-            System.out.printf("x%d %-15s %dg%n", itemCount.get(shippable), shippable.getName(), (int) shippable.getWeight() * itemCount.get(shippable));
+            System.out.printf("%dx %-15s %dg%n", itemCount.get(shippable), shippable.getName(), (int) shippable.getWeight() * itemCount.get(shippable));
         }
-        System.out.printf("Total package weight %.1fkg%n", totalWeight);
+        System.out.printf("Total package weight %.1fkg%n", totalWeight); //rounded to look better cost is still calculated accurately
         System.out.println();
 
     }
